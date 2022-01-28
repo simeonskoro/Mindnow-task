@@ -1,0 +1,350 @@
+#SearchBar-wrapper {
+  ::-webkit-scrollbar {
+    width: 0.5em;
+    border-radius: 0.25em;
+    background: none;
+    // background-color: rgb(32, 33, 36);
+  }
+  ::-webkit-scrollbar-thumb {
+    width: 0.5em;
+    border-radius: 0.25em;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgb(95, 99, 104);
+  }
+
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: center;
+
+  width: 40em;
+  height: 12em;
+
+  flex-shrink: 0;
+  margin: 0 auto;
+  margin-top: 20em;
+  // padding-bottom: 16em;
+  z-index: 2;
+
+  &.top {
+    margin-top: 0;
+
+    // padding-bottom: 0;
+
+    transition: margin 0.3s;
+  }
+
+  #SearchBar-logo {
+    width: 8em;
+    height: 8em;
+
+    margin: 0 auto 1em auto;
+
+    filter: invert(1);
+  }
+
+  #SearchBar-inputWrapper {
+    position: relative;
+    display: flex;
+
+    width: 35em;
+    height: 3em;
+
+    #SearchBar-input {
+      width: 100%;
+      height: 100%;
+
+      flex-shrink: 0;
+      flex-grow: 0;
+
+      padding: 0 3em;
+      z-index: 1;
+
+      font-size: inherit;
+      color: inherit;
+      border-radius: 1.5em;
+      border: 1px solid rgb(95, 99, 104);
+
+      background: none;
+    }
+
+    #SearchBar-icon {
+      position: absolute;
+
+      width: 3em;
+      height: 3em;
+      left: 0;
+
+      z-index: 2;
+    }
+
+    #SearchBar-clearButton {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 2.5em;
+      height: 2.5em;
+      top: 0.25em;
+      right: 0.25em;
+
+      margin: 0;
+      padding: 0;
+      z-index: 2;
+
+      font-size: inherit;
+      cursor: pointer;
+      border: none;
+      border-radius: 50%;
+      outline: none;
+      background: none;
+
+      #SearchBar-clearIcon {
+        width: 3em;
+        height: 3em;
+      }
+
+      &:hover,
+      &:focus {
+        background-color: rgb(95, 99, 104);
+      }
+
+      &[data-active="false"] {
+        display: none;
+      }
+    }
+
+    #SearchBar-dropDown {
+      position: absolute;
+      display: none;
+
+      width: 100%;
+      max-height: calc(20em + 6em + 2px);
+      top: 0;
+
+      padding-top: 3em;
+      z-index: 0;
+      opacity: 0;
+
+      border-radius: 1.5em;
+      background-color: rgb(48, 49, 52);
+      filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.2));
+
+      &::before,
+      &::after {
+        content: "";
+        display: flex;
+        width: calc(100% - 6em);
+        margin: 0 auto;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      &::after {
+        position: absolute;
+        bottom: 3em;
+        left: 3em;
+      }
+
+      #SearchBar-scrollerDiv {
+        display: none;
+        width: 100%;
+        max-height: 20em;
+
+        overflow: auto;
+
+        transition: height 0.3s;
+
+        .SearchBar-DropDownEntry-wrapper {
+          display: flex;
+
+          width: 100%;
+          height: 2em;
+
+          margin: 0;
+          padding: 0 3em;
+
+          text-decoration: none;
+          font-size: inherit;
+          color: inherit;
+          cursor: pointer;
+          border: none;
+          outline: none;
+          background: none;
+
+          > div {
+            width: 100%;
+            overflow: hidden;
+            > span {
+              flex-shrink: 0;
+              text-align: start;
+              line-height: 2em;
+              color: inherit;
+              // &:nth-last-child(2) {
+              //   flex-shrink: 1;
+              //   white-space: nowrap;
+              //   text-overflow: ellipsis;
+              //   overflow: hidden;
+              // }
+            }
+            .SearchBar-DropDownEntry-highlight {
+              text-decoration: underline;
+              color: orange;
+              filter: drop-shadow(
+                0px 0px 5px rgba($color: orange, $alpha: 0.8)
+              );
+            }
+          }
+
+          .SearchBar-DropDownEntry-favorite {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 1.5em;
+            height: 1.5em;
+
+            margin: auto;
+            margin-right: 0;
+            padding: 0;
+
+            font-size: inherit;
+            cursor: pointer;
+            border: none;
+            border-radius: 50%;
+            outline: none;
+            background: none;
+
+            .SearchBar-DropDownEntry-starIcon {
+              width: 100%;
+              height: 100%;
+
+              fill: none;
+              stroke: rgb(154, 160, 166);
+
+              &.favorite {
+                fill: orange;
+                stroke: orange;
+              }
+            }
+
+            &:hover,
+            &:focus {
+              .SearchBar-DropDownEntry-starIcon {
+                stroke: orange;
+                &.favorite {
+                  stroke: none;
+                }
+              }
+            }
+          }
+
+          &:hover,
+          &:focus {
+            background-color: rgb(95, 99, 104);
+          }
+        }
+      }
+
+      #SearchBar-showAllButton {
+        display: none;
+        justify-content: center;
+        align-items: center;
+
+        width: 100%;
+        height: 3em;
+
+        margin: 0;
+        padding: 0;
+
+        text-decoration: none;
+        font-size: inherit;
+        color: inherit;
+        cursor: pointer;
+        border: none;
+        border-radius: 0 0 1.5em 1.5em;
+        outline: none;
+        background: none;
+
+        &:hover,
+        &:focus {
+          background-color: rgb(95, 99, 104);
+        }
+      }
+    }
+
+    &:hover,
+    &:focus,
+    &:focus-within {
+      #SearchBar-input {
+        background-color: rgb(48, 49, 52);
+        border-color: rgb(48, 49, 52);
+        outline: none;
+        filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.2));
+      }
+    }
+    &:focus,
+    &:focus-within {
+      &[data-found="true"] {
+        #SearchBar-input {
+          border-color: rgb(48, 49, 52);
+          filter: none;
+        }
+        #SearchBar-dropDown {
+          display: flex;
+          flex-direction: column;
+
+          animation: opacityFadeIn 0.1s linear 0.1s 1 normal forwards;
+
+          @keyframes opacityFadeIn {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
+          }
+
+          #SearchBar-scrollerDiv {
+            display: flex;
+            flex-direction: column;
+          }
+          #SearchBar-showAllButton {
+            display: flex;
+          }
+        }
+      }
+    }
+  }
+
+  #SearchBar-favorites {
+    width: 2.5em;
+    height: 2.5em;
+
+    margin-left: 0.5em;
+    padding: 0.25em;
+
+    border-radius: 50%;
+    border: 1px solid rgb(95, 99, 104);
+    background-color: rgb(48, 49, 52);
+
+    > svg {
+      fill: none;
+      stroke: rgb(154, 160, 166);
+
+      &.favorite {
+        fill: orange;
+        stroke: orange;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      background-color: rgb(95, 99, 104);
+
+      > svg {
+        fill: orange;
+        stroke: orange;
+      }
+    }
+  }
+}

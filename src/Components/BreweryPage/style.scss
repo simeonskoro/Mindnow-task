@@ -1,0 +1,161 @@
+#BreweryPage-notFound {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  padding-bottom: 4em;
+
+  font-size: 4em;
+  line-height: 4em;
+  font-weight: 100;
+}
+
+#BreweryPage-wrapper {
+  display: flex;
+  align-items: stretch;
+
+  width: 100%;
+  height: 100%;
+  max-height: calc(100% - 12em);
+
+  padding: 2em;
+
+  #BreweryPage-leftSideDiv {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    width: 40em;
+    max-height: 100%;
+
+    flex-shrink: 0;
+
+    margin: 2em;
+    padding: 2em;
+
+    pointer-events: none;
+    user-select: none;
+
+    border-radius: 1em;
+    border: 1px solid rgba(95, 99, 104, 0.2);
+    filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.6));
+
+    // background: linear-gradient(
+    //   135deg,
+    //   rgba(95, 99, 104, 0.2),
+    //   rgba(1, 1, 1, 0)
+    // );
+
+    background: linear-gradient(
+      rgba($color: white, $alpha: 0),
+      rgba($color: white, $alpha: 0.05)
+    );
+
+    > * {
+      width: 100%;
+
+      font-size: larger;
+      font-weight: 100;
+
+      margin-left: 1em;
+
+      pointer-events: all;
+
+      &:last-child {
+        margin-bottom: 100%;
+      }
+    }
+
+    #BreweryPage-favorite {
+      position: absolute;
+
+      width: 2em;
+      height: 2em;
+
+      top: 1em;
+      right: 1em;
+
+      cursor: pointer;
+      padding: 0;
+      z-index: 10;
+      border: none;
+      outline: none;
+      background: none;
+
+      #BreweryPage-star {
+        fill: none;
+        stroke: rgb(154, 160, 166);
+
+        &.favorite {
+          fill: orange;
+          stroke: orange;
+        }
+      }
+
+      &:hover,
+      &:focus {
+        #BreweryPage-star {
+          stroke: orange;
+          &.favorite {
+            stroke: none;
+          }
+        }
+      }
+    }
+
+    #BreweryPage-breweryLogo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 12em;
+      height: 12em;
+
+      margin: 1em;
+
+      flex-shrink: 0;
+
+      font-size: inherit;
+      border-radius: 1em;
+      border: 1px solid rgba(95, 99, 104, 0.2);
+      filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.6));
+      background: linear-gradient(
+        135deg,
+        rgba(95, 99, 104, 0.6),
+        rgba(1, 1, 1, 0)
+      );
+    }
+    #BreweryPage-name {
+      width: calc(100% - 8em);
+      height: 6em;
+
+      margin: 0.5em;
+
+      flex-shrink: 1;
+
+      font-size: 2em;
+      white-space: wrap;
+    }
+  }
+
+  // #BreweryPage-rightSideDiv {
+  //   flex-direction: column;
+
+  //   width: 100%;
+
+  //   > span {
+  //     margin-bottom: 2em;
+  //     font-weight: 100;
+  //     &:first-child {
+  //       margin-bottom: 1em;
+  //       font-size: 2em;
+  //       line-height: 2em;
+  //     }
+  //   }
+  // }
+}

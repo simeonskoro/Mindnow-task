@@ -1,0 +1,44 @@
+#Map-mapOverlay {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+
+  background: linear-gradient(
+      to right,
+      rgba(32, 33, 36, 1),
+      rgba(32, 33, 36, 0.8) 25%,
+      rgba(32, 33, 36, 0) 50%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(32, 33, 36, 1),
+      rgba(32, 33, 36, 0.8) 50px,
+      rgba(32, 33, 36, 0) 150px
+    );
+}
+
+.Map-container {
+  opacity: 0;
+
+  animation: opacityFade 0.3s linear 0.3s 1 normal forwards;
+
+  @keyframes opacityFade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  > div {
+    > div {
+      &:last-child {
+        display: none !important;
+      }
+    }
+  }
+}

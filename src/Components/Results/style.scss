@@ -1,0 +1,266 @@
+#Results-wrapper {
+  position: relative;
+  display: flex;
+
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(
+    rgba($color: white, $alpha: 0),
+    rgba($color: white, $alpha: 0.05)
+  );
+
+  #Results-content {
+    display: flex;
+    flex-direction: column;
+
+    width: 50em;
+    height: 100%;
+
+    flex-shrink: 0;
+
+    padding: 2em;
+    z-index: 1;
+
+    #Results-query {
+      margin-bottom: 1em;
+
+      opacity: 0.6;
+
+      font-style: italic;
+      font-weight: 100;
+    }
+
+    #Results-entries {
+      display: flex;
+      flex-direction: column;
+
+      width: 100%;
+      max-height: calc(6 * 100px + 5 * 10px);
+
+      overflow: auto;
+      user-select: none;
+
+      .BreweryResult-wrapper {
+        display: flex;
+        align-items: center;
+
+        height: 100px;
+
+        flex-shrink: 0;
+
+        padding: 0 25px;
+
+        outline: none;
+        text-decoration: none;
+        font-size: large;
+        line-height: 40px;
+        cursor: pointer;
+        color: inherit;
+        border-radius: 15px;
+        border: 1px solid rgba(95, 99, 104, 0.5);
+        background: linear-gradient(
+          to right,
+          rgb(95, 99, 104, 0.5),
+          rgba(0, 0, 0, 0)
+        );
+        filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.2));
+
+        &:not(:first-child) {
+          margin-top: 10px;
+        }
+
+        &:hover,
+        &:focus {
+          background-color: rgb(95, 99, 104);
+        }
+
+        .BreweryResult-logoDiv {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          width: 60px;
+          height: 60px;
+
+          flex-shrink: 0;
+
+          margin-right: 20px;
+
+          font-size: 15px;
+          line-height: 15px;
+
+          text-align: center;
+
+          border-radius: 25%;
+
+          background-color: rgb(95, 99, 104);
+        }
+
+        .BreweryResult-leftSideInfoDiv {
+          display: flex;
+          flex-direction: column;
+
+          justify-content: center;
+          align-items: flex-start;
+
+          width: 100%;
+          height: 100%;
+          max-width: calc(100% - 120px);
+
+          flex-grow: 1;
+          flex-shrink: 1;
+
+          .BreweryResult-name {
+            font-size: 1.5em;
+            line-height: 1.5em;
+
+            max-width: 100%;
+
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+          }
+          .BreweryResult-size {
+            font-size: 0.75em;
+            line-height: 0.75em;
+            font-style: italic;
+            opacity: 0.5;
+          }
+        }
+
+        .BreweryResult-rightSideInfoDiv {
+          display: flex;
+          flex-direction: column;
+
+          justify-content: space-between;
+          align-items: flex-end;
+
+          width: 40px;
+          height: 100%;
+
+          flex-shrink: 0;
+
+          .BreweryResult-favoriteButton {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            height: 30px;
+            width: 30px;
+
+            margin-top: 20px;
+            padding: 0;
+
+            font-size: inherit;
+            cursor: pointer;
+            border: none;
+            border-radius: 50%;
+            outline: none;
+            background: none;
+            overflow: hidden;
+
+            .BreweryResult-starIcon {
+              width: 80px;
+              height: 80px;
+
+              fill: none;
+              stroke: rgb(154, 160, 166);
+
+              &.favorite {
+                fill: orange;
+                stroke: orange;
+              }
+            }
+
+            &:hover,
+            &:focus {
+              .BreweryResult-starIcon {
+                stroke: orange;
+                &.favorite {
+                  stroke: none;
+                }
+              }
+            }
+          }
+
+          .BreweryResult-location {
+            height: 1.5em;
+
+            margin-bottom: 10px;
+
+            font-size: 0.8em;
+            line-height: 1.5em;
+            opacity: 0.7;
+            font-weight: 100;
+
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+          }
+        }
+      }
+    }
+
+    #Results-pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 100%;
+      height: 4em;
+
+      padding: 0.5em;
+
+      #Results-pageNumber {
+        width: 50px;
+        height: 50px;
+
+        text-align: center;
+        font-weight: 100;
+        font-size: 1.5em;
+        line-height: 50px;
+        user-select: none;
+      }
+
+      .Results-paginationButton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 3em;
+        height: 3em;
+
+        padding: 0;
+
+        font-size: inherit;
+        cursor: pointer;
+        color: inherit;
+        border-radius: 50%;
+        border: none;
+        outline: none;
+        background: none;
+
+        .Results-arrowImg {
+          width: 50%;
+          height: 50%;
+        }
+
+        &:hover,
+        &:focus {
+          background-color: rgb(95, 99, 104);
+        }
+
+        &.disabled {
+          opacity: 0.3;
+          cursor: default;
+          background: none;
+        }
+
+        &:first-child {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}

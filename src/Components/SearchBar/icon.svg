@@ -1,0 +1,6 @@
+<svg class="SearchBar-svg" version="1.1"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+    <circle cx="45" cy="45" r="12" fill="none" stroke="rgb(154,160,166)" stroke-width="4"/>
+    <!-- <line x1="44.25" y1="44.25" x2="50" y2="50" stroke="rgb(154,160,166)" stroke-width="4"/> -->
+    <line x1="54" y1="54" x2="65" y2="65" stroke="rgb(154,160,166)" stroke-width="4" stroke-linecap="round"/>
+</svg>
