@@ -30,21 +30,25 @@ const Results = observer(({ breweries, toggleFavorite }) => {
   const search = query.get("search")
 
   let filteredBreweries = []
-  let pages = 0
   let link = ""
 
+  // ============================================== /
+  // Filtering breweries differently based on whether the page is /favorites or /results.
+  // Using the same page component, only for the sake of saving limited dev time, wouldn't do this in a real situation.
   if (params["*"] === "results") {
     link = `/results?search=${search}&`
+    // Filtering based on search query for /results page.
     filteredBreweries = (search && breweries.filter(brewery => brewery.name.toUpperCase().match(new RegExp(`${search.toUpperCase()}`, "g")))) || []
-    pages = Math.ceil(filteredBreweries.length / 6) || 1
   } else if (params["*"] === "favorites") {
     link = `/favorites?`
+    // Filtering based on favorite prop for /favorites page.
     filteredBreweries = breweries.filter(brewery => brewery.favorite) || []
-    pages = Math.ceil(filteredBreweries.length / 6) || 1
   }
 
+  const pages = Math.ceil(filteredBreweries.length / 6) || 1
   const pageWithinBounds = (page > 0) && (page <= pages)
 
+  // creating markers for the Map component 
   const markers = filteredBreweries.slice((page - 1) * 6, page * 6).map(brewery => (brewery.latitude && brewery.longitude) ? { name: brewery.name, lat: brewery.latitude, lng: brewery.longitude } : null).filter(e => e)
 
   // const markers = [{ name: "-0.05,-0.05", lat: -0.05, lng: -0.05 }, { name: "0.05,0.05", lat: 0.05, lng: 0.05 }]
@@ -53,6 +57,10 @@ const Results = observer(({ breweries, toggleFavorite }) => {
   // markers.push({ name: 'MIN', lat: markersSpan.min.lat, lng: markersSpan.min.lng })
   // markers.push({ name: 'MAX', lat: markersSpan.max.lat, lng: markersSpan.max.lng })
 
+  // ============================================== //
+  // ============================================== //
+  // calculating Zoom and Offset for the Map component
+  // markerSpan = object that contains the most south-west corner and the most north-east corner of the marker span boundry
   const markersSpan = markers.reduce((acc, cur) => {
     const res = { ...acc }
     res.min.lat = Math.min(res.min.lat, cur.lat)
@@ -62,6 +70,7 @@ const Results = observer(({ breweries, toggleFavorite }) => {
     return res
   }, { min: { lat: Infinity, lng: Infinity }, max: { lat: -Infinity, lng: -Infinity } })
 
+  // maximum latitude and longitude distances
   const markerLatRange = Math.max(markersSpan.max.lat - markersSpan.min.lat, 10)
   const markerLngRange = Math.max(markersSpan.max.lng - markersSpan.min.lng, 10)
 
@@ -71,6 +80,8 @@ const Results = observer(({ breweries, toggleFavorite }) => {
   const zoom = Math.max((14.75 - 11.75 * ((maxDist + 5) / 100) ** 0.14) * widthPonder, 2)
   const offset = (markers.length > 1) ? ((10 ** 6 / ((zoom ** 5.2) * markerLngRange)) * widthPonder ** 3) : zoom
   const center = { lat: (markersSpan.min.lat + markersSpan.max.lat) / 2, lng: ((markersSpan.min.lng + markersSpan.max.lng) / 2) - offset }
+  // ============================================== //
+  // ============================================== //
 
   return (
     <div id={ids.wrapper}>

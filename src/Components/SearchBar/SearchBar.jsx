@@ -32,6 +32,9 @@ const DropDownEntry = (props) => {
 
   const spans = []
 
+  // ================================================= //
+  // This part of the code recreates the name string with actual capitalization so that it doesnt get lost when checking the regex that
+  // that has be toUpperCase()-ed along with the name string, so that the results would include non-case-sensitive results, but still display their actual casing.
   let tempName = name
   let i = null
   let cumulative = 0
@@ -46,8 +49,8 @@ const DropDownEntry = (props) => {
       cumulative += i + 1
     }
   }
-
   if (tempName) spans.push(<span key={`${id}-trailing-${cumulative + i}`} >{tempName}</span>)
+  // ================================================= //
 
   return (<Link
     className={classes.entryWrapper}
@@ -84,6 +87,7 @@ const DropDownEntry = (props) => {
         }
       }}
     >
+      {/* A star SVG path for the favorite icon */}
       <svg className={`${classes.starIcon}${favorite ? " favorite" : ""}`} version="1.1"
         xmlns="http://www.w3.org/2000/svg" viewBox="40 40 20 20" preserveAspectRatio="xMidYMid meet">
         <path d="M 50 42 L 52.35 46.76 L 57.61 47.53 L 53.8 51.24 L 54.7 56.47 L 50 54 L 45.3 56.47 L 46.2 51.24 L 42.39 47.53 L 47.65 46.76 Z" strokeWidth="1.25" />
@@ -93,9 +97,11 @@ const DropDownEntry = (props) => {
 }
 
 const SearchBar = observer(({ className, breweries, toggleFavorite }) => {
+  // inputValue for the controlled input component
   const [inputValue, setInputValue] = useState("")
   const inputRef = useRef()
   const showAllRef = useRef()
+  // breweries filtered based on user input in the search bar
   const filteredBreweries = (inputValue && breweries.filter(brewery => brewery.name.toUpperCase().match(new RegExp(`${inputValue.toUpperCase()}`, "g")))) || []
 
   return (
@@ -186,6 +192,7 @@ const SearchBar = observer(({ className, breweries, toggleFavorite }) => {
         </button>
       </div>
       <Link id={ids.favorites} to={"/favorites?page=1"}>
+        {/* A star SVG path for the favorite icon */}
         <svg version="1.1"
           xmlns="http://www.w3.org/2000/svg" viewBox="40 40 20 20" preserveAspectRatio="xMidYMid meet">
           <path d="M 50 42 L 52.35 46.76 L 57.61 47.53 L 53.8 51.24 L 54.7 56.47 L 50 54 L 45.3 56.47 L 46.2 51.24 L 42.39 47.53 L 47.65 46.76 Z" strokeWidth="1.25" />

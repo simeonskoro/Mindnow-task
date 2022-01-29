@@ -26,8 +26,11 @@ const BreweryPage = observer(({ breweries, toggleFavorite }) => {
 
   if (!brewery) return null
 
-  console.log({ ...brewery })
-
+  // ================================================================== //
+  // creating the location string based on available props for the brewery
+  // (if I had more reusable functions throughout this project I would definitely create a helpers.js file
+  // where I would store them all, and import them where I need them, but since it is just this one, I just
+  // copied and pasted the code)
   let location = ""
   if (brewery.street) {
     location = location.concat(brewery.street)
@@ -45,10 +48,10 @@ const BreweryPage = observer(({ breweries, toggleFavorite }) => {
     if (location) location = location.concat(", ")
     location = location.concat(brewery.postal_code)
   }
+  // ================================================================== //
 
+  // *note - not all breweries have their coord (lat/lng) so they can't appear on the Map
   const hasCoords = !!(brewery.latitude && brewery.longitude)
-
-
   const center = { lat: brewery.latitude, lng: brewery.longitude - 0.01 }
 
   return !!brewery ? (

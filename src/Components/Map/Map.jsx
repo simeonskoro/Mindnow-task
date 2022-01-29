@@ -9,8 +9,6 @@ const ids = {
 const MapContainer = (props) => {
   const { center, zoom = 3, markers = [] } = props
 
-  console.log(zoom)
-
   return <>
     <Map
       google={props.google}
@@ -28,7 +26,7 @@ const MapContainer = (props) => {
 }
 
 const GoogleMap = GoogleApiWrapper((props) => ({
-  // apiKey: "",
+  // apiKey: "",  I have no key (so there's the "For development prposes only" text in the map)
 }))(MapContainer)
 
 export default GoogleMap

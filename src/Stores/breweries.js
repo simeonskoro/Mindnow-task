@@ -29,15 +29,6 @@ class BreweriesStore {
     this.favorizeBreweries();
   };
 
-  // addFavorite = (id) => {
-  //   if (this.favorites.indexOf(id) === -1) this.favorites.push(id);
-  // };
-
-  // removeFavorite = (id) => {
-  //   const temp = [...this.favorites];
-  //   this.favorites = [...temp.filter((e) => e !== id)];
-  // };
-
   setBreweries = (breweries) => {
     console.log("Setting Breweries...");
     this.breweries = [...breweries];
@@ -63,8 +54,6 @@ class BreweriesStore {
       breweries: false,
       favorites: false,
       favorizedBreweries: observable,
-      // addFavorite: action.bound,
-      // removeFavorite: action.bound,
       favorizeBreweries: action.bound,
       toggleFavorite: action.bound,
       setBreweries: action.bound,

@@ -15,6 +15,9 @@ const classes = {
 
 const BreweryResult = ({ brewery, callback }) => {
 
+
+  // ================================================================== //
+  // creating the location string based on available props for the brewery
   let location = ""
   if (brewery.street) {
     location = location.concat(brewery.street)
@@ -28,6 +31,7 @@ const BreweryResult = ({ brewery, callback }) => {
     if (location) location = location.concat(", ")
     location = location.concat(brewery.country)
   }
+  // ================================================================== //
 
   return (
     <Link to={`/${brewery.id}`} className={classes.wrapper}>
