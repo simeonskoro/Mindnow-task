@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+Frontend task
+Hops&Barley
+This document delivers information about the project that is required. The goal is to provide a
+high-level overview and allow the candidate some freedom of choice in how he can implement
+the project. The focus is on how the developer thinks, how he handles challenges, how he
+approaches problem solving in general. Code quality and readability is a hygiene factor that will
+be taken into consideration.
+Introduction
+You work as a freelance developer and last week you have just finished a big project for a huge
+corporation that you have been working on for the past 2 years. You decided to scale down a bit
+and as a next project find something a lot smaller and lighter, something that you can have fun
+making. You notice an ad, it’s this company that is looking for someone to create an app for
+them. The copy just says: “We need a search app that will list companies for the user” -
+Hops&Barley.
+Intrigued, you decide to give it a go and contact them...
+The Project (H&B v1.0)
+Your job is to write a simple search app named Hops&Barley. It’s an app that helps users find
+breweries based on their search input, check some additional info for each individual brewery,
+see it’s location on map (optional) and add the desired breweries to favourites.
+Functionality needed
+Home page should have the app logo and a search box where user can input his search term
+Result page should list all the returned breweries with its:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Name
+- Brewery type
+- City / State / Country
+  When clicked on a list item, user should be show a page with following details:
+- Brewery name
+- Brewery type
+- Brewery logo
+- Brewery address
+- Brewery phone number
+- Brewery website url
+- Map with its location (optional)
+  If any of the data is not provided, do not show it of course.
+  If the logo is not existing, show a placeholder image.
+  User should be able to add the selected brewery to his favourites list.
+  There should be a page with favourites so users can check them and remove them from the list
+  if needed.
+  Prerequisites
+  Please use the latest React / React-Native / Flutter (will be stated in email).
+  You are allowed to use any React / RN / Flutter packages.
+  Code should be commented and at least some tests should be done.
+  Basic design is ok.
+  All the data should be stored locally.
+  If state management is used it should be Mobx.
+  For brewery search use Open Brewery DB: https://www.openbrewerydb.org/
+  For brewery logo use Clearbit Logo API: https://clearbit.com/logo
+  Limitations
+  Structure
+  You are given freedom in structuring your application. Consider the application as a whole,
+  Hops&Barley, what would your App look like? You can consider this your pet-project and decide
+  yourself how the structure would look like. The Stories above are guidelines and not strict rules
+  that need to be followed.
+  Database
+  Consider the Data Stores that will be used and how the data will be structured inside the app.
+  Best Practices should be followed.
+  Optional Features
+- Representative design - Beautify the basic Design with some nice looking CSS.
+- Animation / Interaction improvements - You can consider what small animations can
+  be added to make the app look and feel cooler.
+  Review
+  The code does not need to be complete or perfect. You can submit when you are comfortable
+  enough for us to take a look at it. The main point of this assignment is to understand how well
+  you write code, how you tackle unknown problems and how you think. Do not be afraid if
+  everything is not perfect, it rarely is, but try to do your best to bring out a working solution.
+  Working is better than perfect but non-working
